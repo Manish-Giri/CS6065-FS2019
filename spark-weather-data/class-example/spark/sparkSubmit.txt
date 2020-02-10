@@ -1,0 +1,26 @@
+spark-submit --master yarn --deploy-mode client --executor-memory 1g --name wordcount --conf "spark.app.id=wordcount" WordCount.py /user/kumarlt/books/input/*.txt 4
+
+
+spark-submit --master yarn --deploy-mode client --executor-memory 1g --name wordcount --conf "spark.app.id=wordcount" newCount.py /user/kumarlt/books/input/*.txt 8
+
+
+pyspark --master yarn --py-files countFunction.py
+
+
+
+from pyspark.sql import *
+>>> inData = sc.textFile("cc/student/student.csv")
+
+parts = inData.map(lambda l: l.split(","))
+>>> people = parts.map(lambda p: Row(name=p[0], email=p[1], role=p[2], comment=p[3]))
+>>> schemaPeople = spark.createDataFrame(people)
+>>> schemaPeople.printSchema()
+
+schemaPeople.createOrReplaceTempView("people")
+>>> spark.sql("Select count(*) from people")
+
+
+spark.sql("Select count(*) from people").show()
+
+schemaPeople.printSchema()
+schemaPeople.where('name like "J%"').show()

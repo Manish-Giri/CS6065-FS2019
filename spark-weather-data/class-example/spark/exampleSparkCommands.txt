@@ -1,0 +1,41 @@
+file_path = "<data_location>"
+inTextData = spark.read.format("csv").option("header", "true").option("delimiter","\t").load(file_path)
+
+
+Spark Schema definition:
+
+schema = StructType([
+    StructField("STN", StringType()),
+    StructField("WBAN", IntegerType()),
+    StructField("YEARMODA", StringType()),
+    StructField("TEMP", StringType()),
+    StructField("DEWP", StringType()),
+    StructField("SLP", StringType()),
+    StructField("STP", StringType()),
+    StructField("VISIB", StringType()),
+    StructField("WDSP", StringType()),
+    StructField("MXSPD", StringType()),
+    StructField("GUST", StringType()),
+    StructField("MAX", StringType()),
+    StructField("MIN", StringType()),
+    StructField("PRCP", StringType()),
+    StructField("SNDP", StringType()),
+    StructField("FRSHTT", StringType())
+])
+
+Convert Dataframe to rdd:
+
+rdd1 = inTextData.rdd
+type(rdd1)
+
+Apply lambda function to get new rdd:
+
+rdd2 = rdd1.map(lambda x: str(x).split('=')[1])
+rdd3 = rdd2.map(lambda x: ' '.join(x.split()))
+
+
+Dropping column from dataframe:
+cleanData = newInData.drop('_c1','_c4','_c6','_c8','_c10','_c12','_c14')
+
+Getting schema of the dataframe:
+cleanData.printSchema()
