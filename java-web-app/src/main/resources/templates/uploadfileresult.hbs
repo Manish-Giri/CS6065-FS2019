@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Uploaded file</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<!--<h1>Welcome to Cloud Computing</h1>-->
+<div class="container">
+    <nav class="navbar navbar-light bg-dark d-flex justify-content-center mb-4">
+        <span class="navbar-brand mb-2 bg-dark text-white h2">Welcome to Cloud Computing, {{username}}</span>
+    </nav>
+
+    <h2>{{result}}</h2>
+
+    <div class="alert alert-info" role="alert">
+        Your file {{filename}} was successfully uploaded
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        Number of words in your file: {{wordcount}}
+    </div>
+
+    <form action="/downloadfile" method="get">
+        <button type="submit" class="btn btn-success">Download File</button>
+    </form>
+
+</div>
+
+</body>
+</html>
