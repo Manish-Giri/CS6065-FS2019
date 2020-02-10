@@ -1,0 +1,7 @@
+hello world
+this 
+is line 
+this is some other text
+gotta make sure this file has most words
+finishing now
+bye
